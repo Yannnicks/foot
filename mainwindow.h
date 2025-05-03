@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QKeyEvent>  // Pour capturer les événements de touches
-
+#include "mygraphicsview.h"
 class Joueur;  // Déclaration anticipée de la classe Joueur
 class Balle;
 
@@ -20,14 +20,15 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-protected:
-    void keyPressEvent(QKeyEvent *event) override;  // Ajout de keyPressEvent
-
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     Joueur *player1;  // Déclaration de player1
     Joueur *player2;  // Déclaration de player2
+public slots:
+    void updateCoordinates();
+
 };
+
 
 #endif // MAINWINDOW_H

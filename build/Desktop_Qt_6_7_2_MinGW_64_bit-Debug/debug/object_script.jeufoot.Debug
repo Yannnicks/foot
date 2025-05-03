@@ -1,0 +1,11 @@
+debug/Balle.o
+debug/SousProg.o
+debug/joueur.o
+debug/main.o
+debug/mainwindow.o
+debug/mygraphicsview.o
+debug/qrc_qmake_qmake_qm_files.o
+debug/moc_Balle.o
+debug/moc_joueur.o
+debug/moc_mainwindow.o
+debug/moc_mygraphicsview.o

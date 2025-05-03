@@ -14,13 +14,15 @@ SOURCES += \
     SousProg.cpp \
     joueur.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mygraphicsview.cpp
 
 HEADERS += \
     Balle.h \
     SousProg.h \
     joueur.h \
-    mainwindow.h
+    mainwindow.h \
+    mygraphicsview.h
 
 FORMS += \
     mainwindow.ui

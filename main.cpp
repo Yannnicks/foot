@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "mygraphicsview.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>

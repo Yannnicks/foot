@@ -1,12 +1,12 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "Joueur.h"
 #include "SousProg.h"
+#include "ui_mainwindow.h"
+#include "mygraphicsview.h"
+#include "Joueur.h"
 #include "Balle.h"
-#include <QGraphicsScene>
-#include <QKeyEvent>  // Inclure pour capturer les événements de touches
-
-int posXj1 = -100, posXj2 = 100, posXBallon = 0, posYballon = 0, posYj1 = 0, posYj2 = 0;
+#include <QLabel>
+#include <QTimer>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -14,26 +14,42 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    scene = new QGraphicsScene(this);
-    ui->graphicsView->setScene(scene);
+    // Initialisation des coordonnées
+    int Joueur2X = 100, Joueur1X = -100, Joueur1Y = 0, Joueur2Y = 0, balleX = 10, balleY = 10;
 
-    // Premier joueur
-    player1 = new Joueur(posXj1, posYj1, 30, 30);
+    // Création de la scène
+    scene = new QGraphicsScene(this);
+
+    // Création des joueurs
+    player1 = new Joueur(Joueur1X, Joueur1Y, 30, 30);
     player1->setBrush(QBrush(Qt::blue));
     scene->addItem(player1);
 
-    // Deuxième joueur
-    player2 = new Joueur(posXj2, posYj2, 30, 30);
+    player2 = new Joueur(Joueur2X, Joueur2Y, 30, 30);
     player2->setBrush(QBrush(Qt::red));
     scene->addItem(player2);
 
-    // Assurer que les deux joueurs sont focusables et peuvent recevoir les événements
-    player1->setFocus();
-    player2->setFocus();
-
-    // Ajouter la balle à la scène
-    Balle *ballon = new Balle(posXBallon, posYballon, 10, 10);
+    // Création de la balle
+    Balle *ballon = new Balle(balleX, balleY, 10, 10);
     scene->addItem(ballon);
+
+    // Remplace le QGraphicsView standard par MyGraphicsView
+    MyGraphicsView *customView = new MyGraphicsView(this);
+    customView->setScene(scene);
+    customView->player1 = player1;
+    customView->player2 = player2;
+
+    // Remplace l'ancien widget dans l'UI par le nouveau MyGraphicsView
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->setFocus(); // Donne le focus à la vue
+
+    // Création d'un timer pour mise à jour
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MainWindow::updateCoordinates);
+    timer->start(10);
+
+    // Mise à jour initiale
+    updateCoordinates();
 }
 
 MainWindow::~MainWindow()
@@ -41,10 +57,28 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// Redéfinition de keyPressEvent pour gérer les touches
-void MainWindow::keyPressEvent(QKeyEvent *event)
+void MainWindow::updateCoordinates()
 {
-    // Appeler la fonction Mouvement pour chaque joueur
-    player1->keyPressEvent(event);  // Déplacer le joueur 1
-    player2->keyPressEvent(event);  // Déplacer le joueur 2
+    if (ui->labelPlayer1)
+        ui->labelPlayer1->setText("Joueur 1: (" + QString::number(player1->x()) + ", " + QString::number(player1->y()) + ")");
+    if (ui->labelPlayer2)
+        ui->labelPlayer2->setText("Joueur 2: (" + QString::number(player2->x()) + ", " + QString::number(player2->y()) + ")");
+
+    // Trouver la balle
+    Balle *ballon = nullptr;
+    for (QGraphicsItem *item : scene->items()) {
+        ballon = dynamic_cast<Balle*>(item);
+        if (ballon) break;
+    }
+
+    if (ballon && ui->labelBallon) {
+        ui->labelBallon->setText("Ballon: (" + QString::number(ballon->x()) + ", " + QString::number(ballon->y()) + ")");
+
+        }
+    /*int CollisionJoueur=player1->x()+20;
+    if (ballon->x() == CollisionJoueur) {
+        int newX = ballon->x() + 200;
+        Animation(700,QString::number(ballon->x()),QString::number(ballon->y()),QString::number(newX),QString::number(ballon->y()),ballon);}
+
+*/
 }
