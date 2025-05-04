@@ -48,15 +48,18 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
         if (player2) player2->moveBy(0, step);
         return;
     case Qt::Key_X:
-        if (player1 && ballon) {
+        if (player1 && ballon) {int newX = ballon->x() + 200,newY=ballon->y();
             QList<QGraphicsItem*> collisions = player1->collidingItems();
                 if ((CollisionJoueurX - CollisionBallonX <= 10 && CollisionJoueurX - CollisionBallonX >= -10) || (CollisionJoueurY - CollisionBallonY <= 10 && CollisionJoueurY - CollisionBallonY >= -10)) {
-                    int newX = ballon->x() + 200;
+                    if(CollisionJoueurY<CollisionBallonY||CollisionJoueurY>CollisionBallonY)
+                    {
+                    newY=ballon->y()+CalculY;
+                    }
                     Animation(700,
                               QString::number(ballon->x()),
                               QString::number(ballon->y()),
                               QString::number(newX),
-                              QString::number(ballon->y()),
+                              QString::number(newY),
                               qobject_cast<QObject*>(ballon));
                     break;
                 }
