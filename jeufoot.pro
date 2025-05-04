@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     Balle.cpp \
     SousProg.cpp \
+    cages.cpp \
     joueur.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     Balle.h \
     SousProg.h \
+    cages.h \
     joueur.h \
     mainwindow.h \
     mygraphicsview.h

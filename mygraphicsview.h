@@ -11,9 +11,9 @@ class MyGraphicsView : public QGraphicsView
 public:
     MyGraphicsView(QWidget *parent = nullptr);
 
-    Joueur *player1;
-    Joueur *player2;
-    Balle *ballon;
+    Joueur *player1 = nullptr;
+    Joueur *player2 = nullptr;
+    Balle *ballon = nullptr;
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

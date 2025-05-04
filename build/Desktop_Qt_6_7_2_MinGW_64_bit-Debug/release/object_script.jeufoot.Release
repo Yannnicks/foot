@@ -1,5 +1,6 @@
 release/Balle.o
 release/SousProg.o
+release/cages.o
 release/joueur.o
 release/main.o
 release/mainwindow.o

@@ -8,7 +8,7 @@ Joueur::Joueur(qreal x, qreal y, qreal width, qreal height, QGraphicsItem *paren
     setPos(x, y);
     m_brush = QBrush(Qt::blue); // Couleur par défaut
     setFlag(QGraphicsItem::ItemIsFocusable); // Pour rendre le joueur focusable
-    setFocus(); // Nécessaire pour qu'il reçoive les événements clavier
+     // Nécessaire pour qu'il reçoive les événements clavier
 }
 
 QRectF Joueur::boundingRect() const

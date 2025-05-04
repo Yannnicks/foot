@@ -16,7 +16,7 @@ public:
 
     void setBrush(const QBrush &brush);
 
-    void keyPressEvent(QKeyEvent *event) override; // Le keyPressEvent ici pour gérer chaque joueur
+    //void keyPressEvent(QKeyEvent *event) override; // Le keyPressEvent ici pour gérer chaque joueur
 
 private:
     qreal m_width;

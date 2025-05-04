@@ -12,13 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
+#include "mygraphicsview.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -26,12 +26,13 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QGraphicsView *graphicsView;
+    MyGraphicsView *graphicsView;
     QFrame *line;
     QLCDNumber *lcdNumber;
     QLabel *labelPlayer1;
     QLabel *labelPlayer2;
     QLabel *labelBallon;
+    QLCDNumber *lcdNumber_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -42,11 +43,15 @@ public:
         MainWindow->resize(1772, 892);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView = new MyGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
-        graphicsView->setGeometry(QRect(20, 50, 1061, 491));
+        graphicsView->setGeometry(QRect(9, 50, 1071, 490));
+        graphicsView->setMaximumSize(QSize(1100, 500));
         graphicsView->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(34,139, 34);"));
+        graphicsView->setFrameShape(QFrame::Shape::Box);
+        graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
         line = new QFrame(centralwidget);
         line->setObjectName("line");
         line->setGeometry(QRect(430, 60, 20, 501));
@@ -57,15 +62,21 @@ public:
         lcdNumber->setGeometry(QRect(420, 90, 64, 23));
         lcdNumber->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgb(0, 0, 0);"));
+        lcdNumber->setProperty("intValue", QVariant(3));
         labelPlayer1 = new QLabel(centralwidget);
         labelPlayer1->setObjectName("labelPlayer1");
-        labelPlayer1->setGeometry(QRect(30, 340, 151, 20));
+        labelPlayer1->setGeometry(QRect(20, 160, 151, 20));
         labelPlayer2 = new QLabel(centralwidget);
         labelPlayer2->setObjectName("labelPlayer2");
-        labelPlayer2->setGeometry(QRect(20, 280, 141, 20));
+        labelPlayer2->setGeometry(QRect(10, 70, 141, 20));
         labelBallon = new QLabel(centralwidget);
         labelBallon->setObjectName("labelBallon");
-        labelBallon->setGeometry(QRect(20, 310, 131, 20));
+        labelBallon->setGeometry(QRect(20, 110, 131, 20));
+        lcdNumber_2 = new QLCDNumber(centralwidget);
+        lcdNumber_2->setObjectName("lcdNumber_2");
+        lcdNumber_2->setGeometry(QRect(200, 90, 64, 23));
+        lcdNumber_2->setDigitCount(5);
+        lcdNumber_2->setProperty("value", QVariant(1.000000000000000));
         MainWindow->setCentralWidget(centralwidget);
         line->raise();
         graphicsView->raise();
@@ -73,6 +84,7 @@ public:
         labelPlayer1->raise();
         labelPlayer2->raise();
         labelBallon->raise();
+        lcdNumber_2->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 1772, 25));
