@@ -21,4 +21,22 @@ void Animation(int Duree, QString DebutX, QString DebutY, QString FinX, QString 
     animation->start(QAbstractAnimation::DeleteWhenStopped);
 }
 
-// Démarrer l'animatio
+int comparaison (int Y,int X,int Z)
+{int plusGrand;
+if(Y<X)
+    {
+        if(Y<Z){
+            plusGrand=2;}
+
+        else {plusGrand=4;}
+    }
+
+    else
+    {
+        if(X<Z){
+        plusGrand=3;}
+
+        else{ plusGrand=4;}
+    }
+return plusGrand;
+}// Démarrer l'animatio

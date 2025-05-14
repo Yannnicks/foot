@@ -10,4 +10,6 @@
 void Animation(int Duree, QString DebutX, QString DebutY, QString FinX, QString FinY, QObject* item);
 // Dans SousProg.h
 void Mouvement(Joueur* joueur, int equipe, QKeyEvent* event);
+
+int comparaison (int Y,int X,int Z);
 #endif // SOUSPROG_H

@@ -5,8 +5,10 @@ release/joueur.o
 release/main.o
 release/mainwindow.o
 release/mygraphicsview.o
+release/terrainitem.o
 release/qrc_qmake_qmake_qm_files.o
 release/moc_Balle.o
 release/moc_joueur.o
 release/moc_mainwindow.o
 release/moc_mygraphicsview.o
+release/moc_terrainitem.o

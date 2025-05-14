@@ -16,7 +16,8 @@ SOURCES += \
     joueur.cpp \
     main.cpp \
     mainwindow.cpp \
-    mygraphicsview.cpp
+    mygraphicsview.cpp \
+    terrainitem.cpp
 
 HEADERS += \
     Balle.h \
@@ -24,7 +25,8 @@ HEADERS += \
     cages.h \
     joueur.h \
     mainwindow.h \
-    mygraphicsview.h
+    mygraphicsview.h \
+    terrainitem.h
 
 FORMS += \
     mainwindow.ui

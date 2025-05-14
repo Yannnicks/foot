@@ -7,6 +7,7 @@
 #include "mygraphicsview.h"
 class Joueur;  // Déclaration anticipée de la classe Joueur
 class Balle;
+class Terrainitem;
 
 namespace Ui {
 class MainWindow;
@@ -21,13 +22,14 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    Joueur *player1;  // Déclaration de player1
-    Joueur *player2;  // Déclaration de player2
+    Joueur* player[20];
+    Balle* ballon;
+    Ui::MainWindow *ui;
+
+
 public slots:
     void updateCoordinates();
-
 };
 
 
