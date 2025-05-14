@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>JeuFoot</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>0</y>
+      <width>1551</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="labelBallon">
+       <property name="text">
+        <string>labelBall</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelPlayer2">
+       <property name="text">
+        <string>labelPlay</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelPlayer1">
+       <property name="text">
+        <string>labelPlayer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="lcdNumber_2">
+       <property name="digitCount">
+        <number>5</number>
+       </property>
+       <property name="value" stdset="0">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="lcdNumber">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="intValue" stdset="0">
+        <number>3</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+    <zorder>lcdNumber</zorder>
+    <zorder>lcdNumber_2</zorder>
+    <zorder>labelPlayer1</zorder>
+    <zorder>labelPlayer2</zorder>
+    <zorder>labelBallon</zorder>
+   </widget>
+   <widget class="QGraphicsView" name="terrainView">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>121</y>
+      <width>2121</width>
+      <height>881</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>999</width>
+      <height>800</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1200000</width>
+      <height>12000000</height>
+     </size>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContentsOnFirstShow</enum>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
